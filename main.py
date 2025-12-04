@@ -21,6 +21,7 @@ def send_message(to_number, from_number, message_body):
         message = client.messages.create(
            from_='whatsapp:+14155238886',
            body=message_body,
+           to=f'whatsapp:{recipient_number}'
         )
         print(f"Message sent successfully! Message SID: {message.sid}")
     except Exception as e:
