@@ -1,5 +1,30 @@
+# Environment Variables
 .env
+.env.local
+
+# Python
 *.pyc
 __pycache__/
 *.egg-info/
+.eggs/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Flask
+instance/
+.webassets-cache
