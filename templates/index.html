@@ -231,11 +231,20 @@
                     },
                     body: JSON.stringify(formData)
                 });
-                
-                const result = await response.json();
-                
+
+                // Be defensive: some server errors may return non-JSON (HTML/error page)
+                const contentType = response.headers.get('content-type') || '';
+                let result;
+                if (contentType.includes('application/json')) {
+                    result = await response.json();
+                } else {
+                    // fallback: read text and show to user
+                    const text = await response.text();
+                    result = { status: 'error', message: text || `HTTP ${response.status}` };
+                }
+
                 messageDiv.classList.remove('success', 'error', 'info');
-                
+
                 if (result.status === 'success') {
                     messageDiv.textContent = `✅ Message sent successfully! SID: ${result.sid}`;
                     messageDiv.classList.add('success', 'show');
