@@ -8,15 +8,20 @@
 from twilio.rest import Client
 from datetime import datetime, timedelta
 import time
+from dotenv import load_dotenv
+import os
 
-#step 2: twilio credentials
-account_sid = 'AC684e965ddbdf4cbb8b5bcbf355291f78'
-auth_token = 'ff91fc3f40b4854fe4969ec065f5fbb1'
+# Load environment variables
+load_dotenv()
+
+# Step 2: Twilio credentials (loaded from .env)
+account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+auth_token = os.getenv('TWILIO_AUTH_TOKEN')
 
 client = Client(account_sid, auth_token)
 
 #step 3: designe send message function
-def send_message(to_number, from_number, message_body):
+def send_message(recipient_number, message_body):
     try:
         message = client.messages.create(
            from_='whatsapp:+14155238886',
@@ -50,4 +55,8 @@ if schedule_choice == 'later':
         send_message(recipient_number, message_body)
     else:
         print("The scheduled time is in the past. Please enter a future time.")
+elif schedule_choice == 'now':
+    send_message(recipient_number, message_body)
+else:
+    print("Invalid choice. Please enter 'now' or 'later'.")
 
