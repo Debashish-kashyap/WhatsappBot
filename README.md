@@ -4,14 +4,20 @@
 
 WhatsApp Bot is a Python-based application that allows you to send WhatsApp messages using the **Twilio API**. The bot supports both immediate message delivery and scheduled message sending for future dates and times.
 
+Available in two versions:
+- **Web Dashboard** (Modern UI) - Recommended ⭐
+- **CLI Interface** (Terminal) - Simple & Quick
+
 ## ✨ Features
 
 - ✅ Send WhatsApp messages instantly
 - ✅ Schedule messages for future delivery
+- ✅ Beautiful web dashboard interface
 - ✅ User-friendly command-line interface
 - ✅ Secure credential management with environment variables
 - ✅ Error handling for failed messages
 - ✅ Support for multiple recipients
+- ✅ Real-time feedback and notifications
 
 ## 🔒 Security
 
@@ -80,6 +86,7 @@ Follow the prompts to:
 
 - `twilio` - Twilio SDK
 - `python-dotenv` - Environment variable management
+ `flask` - Web framework for dashboard
 
 ## 🐛 Known Issues
 
